@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<style>
+.button {
+    background-color:   black; 
+    border: none;
+    color: white;
+    padding: 10px 28px;
+    text-align: center;
+    
+    font-size: 13px;
+    margin: 2px 1px;
+    cursor: pointer;
+    
+}
+.button2:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+div {
+    width: 100px;
+    height: 520px;
+    background-color: white;/*#e5bf9a*/
+    box-shadow: 10px 10px 5px #888888;
+    align: center;
+    opacity: 0.7;
+}
+.center {
+    margin: auto;
+    width: 60%;
+    border: none;
+    padding: 10px;
+}
+body{
+/* background-color: #87CEFA; */
+ background: url(air5.jpg) no-repeat fixed;
+ background-size: cover;
+}
+
+</style>
+</head>
+<body>
+ 
+<div class="center">
+<center><h1>REGISTER</h1></center><br> 
+<form name="f1" action="register.php" align="center" method="get">
+  Name:<input type="text" name="name">
+  <br><br>
+  Phone:<input type="number" name="phone">
+  &nbsp;&nbsp;
+
+  Date of Birth: <input type="date" name="bday">
+  <br><br>
+  Address: <textarea name="address" rows="2" cols="20" maxlength="100">
+</textarea><br><br>
+Gender:&nbsp;&nbsp;&nbsp;&nbsp;
+  <input type="radio" name="gender" value="male" checked> Male
+  <input type="radio" name="gender" value="female"> Female
+<br><br>
+  Email:<input type="email" name="email">
+  <br><br>
+
+  Userid:<input type="text" name="userid" id="userid" required>
+  <br><br>
+  Password:<input type="password" id="password" name="password" onkeyup="CheckPasswordStrength(this.value)" />
+<span id="password_strength"></span>
+  
+  <br><br>  
+Re-type Password:<input type="password" name="repass" required>
+<input type="hidden" name="time" id="time" />
+<br><br>  
+  <input class="button button2" type="submit" value="Register" onclick="return myFunction()">&nbsp;&nbsp;&nbsp;&nbsp;
+  <input class="button button2" type="reset" value="Clear"><br> <br>
+  <a href="login_encrypt_pass2.html">Already have account?</a>
+</form> 
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/sha1.js"></script>
+<script>
+
+var flag=0;
+
+
+
+
+function myFunction() {
+
+
+
+
+
+if(isNaN(f1.userid.value)!=true){
+  alert("invalid userid");
+  return false;
+}
+
+else if(flag==0)
+{
+  alert("should enter a strong password");
+  return false;
+}
+
+
+else if(f1.password.value!=f1.repass.value)
+{
+  alert("password and re-type password does not match");
+  return false;
+}
+
+else{
+ 
+			//alert("hello");
+			var password=f1.password.value;
+			 var hash = CryptoJS.SHA1(password);
+       		var result = CryptoJS.enc.Hex.stringify(hash);
+			alert("hash value=  "+	result);
+			f1.password.value=result;
+			//var d = new Date();
+			
+			//var n = d.getMinutes();
+			
+			
+			
+			
+			
+			var d = new Date();
+			var n=d.toLocaleDateString();
+			
+			f1.time.value=n;
+			
+			
+			return true;
+ 
+ 
+}
+
+
+
+}
+
+
+
+function CheckPasswordStrength(password) {
+        var password_strength = document.getElementById("password_strength");
+		var password=f1.password.value;
+        //TextBox left blank.
+        if (password.length == 0) {
+            password_strength.innerHTML = "";
+            return;
+        }
+ 
+        //Regular Expressions.
+        var regex = new Array();
+        regex.push("[A-Z]"); //Uppercase Alphabet.
+        regex.push("[a-z]"); //Lowercase Alphabet.
+        regex.push("[0-9]"); //Digit.
+        regex.push("[$@$!%*#?&]"); //Special Character.
+ 
+        var passed = 0;
+ 
+        //Validate for each Regular Expression.
+        for (var i = 0; i < regex.length; i++) {
+            if (new RegExp(regex[i]).test(password)) {
+                passed++;
+            }
+        }
+ 
+        //Validate for length of Password.
+        if (passed > 2 && password.length > 8) {
+            passed++;
+        }
+ 
+        //Display status.
+        var color = "";
+        var strength = "";
+        switch (passed) {
+            case 0:
+            case 1:
+                strength = "Weak";
+                color = "red";
+				flag=0;
+                break;
+            case 2:
+                strength = "Good";
+                color = "darkorange";
+				flag=0;
+                break;
+            case 3:
+            case 4:
+                strength = "Strong";
+                color = "green";
+				flag=1;
+                break;
+            case 5:
+                strength = "Very Strong";
+                color = "darkgreen";
+				flag=1;
+                break;
+        }
+        password_strength.innerHTML = strength;
+        password_strength.style.color = color;
+    }
+</script>
+
+</div>
+</body>
+</html>

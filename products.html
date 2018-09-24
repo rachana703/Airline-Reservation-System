@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style> 
+body{
+	background: url(10.jpg) no-repeat ; 
+	background-size: cover;
+    
+	/*background-attachment: fixed;*/
+}
+#div1 {
+    width: 250px;
+    height: 250px;
+    background: url(33.jpg) no-repeat ; 
+    transition: width 2s;
+    transition-timing-function: ease-in-out;
+
+}
+
+#div1:hover {
+    width: 400px;
+}
+#div2 {
+    width: 150px;
+    height: 150px;
+    background: url(44.jpg) no-repeat ; 
+    transition: width 2s, height 4s;
+}
+
+#div2:hover {
+    width: 300px;
+    height: 300px;
+}
+#div3 {
+    width: 150px;
+    height: 150px;
+    background: url(22.jpg) no-repeat ; 
+    transition: width 2s, height 2s, transform 2s;
+    transition-delay: 0.5s;
+}
+
+#div3:hover {
+    width: 300px;
+    height: 300px;
+    transform: rotate(180deg);
+}
+#div4 {
+    width: 250px;
+    height: 150px;
+    background: url(11.jpg) no-repeat ; 
+    transition: width 2s, height 2s, transform 2s;
+    transition-delay: 0.5s;
+}
+
+#div4:hover {
+    
+    height: 300px;
+    
+}
+
+</style>
+</head>
+<body>
+<div align="center" style="float:left; width:100%">
+<center><img src="g.jpg" width=400px height=200px>
+</center></div>
+<center><p style="font-size:60"><strong><b>Projects by us</b></strong></center>
+    <div align="center" style="float:left; width:100%">
+    <div align="center" style="float:left; width:25%">
+    <div id="div1"></div>
+    </div>
+    <div align="center" style="float:left; width:25%">
+    <div id="div2"></div>
+    </div>
+    <div align="center" style="float:left; width:25%">
+    <div id="div3"></div>
+    </div>
+    <div align="center" style="float:left; width:25%">
+    <div id="div4"></div>
+    </div>
+</div>
+
+</body>
+</html>

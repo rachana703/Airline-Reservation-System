@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/sha1.js"></script>
+<head>
+<style>
+.button {
+  
+	padding: 15px 25px;
+  font-size: 24px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color:#505050;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+	
+    
+}
+
+h1{
+	font-family: "Georgia", serif;
+
+	
+}
+
+.button2:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.26),0 17px 50px 0 rgba(0,0,0,0.21);
+}
+div {
+
+    width: 0px;
+    height: 250px;
+    background-color: 	white;/*#e5bf9a;*/
+    box-shadow: 10px 10px 5px #888888;
+    
+	opacity: 0.7;
+	
+	margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}
+.center {
+    margin: auto;
+    width: 20%;
+    border: none;
+    padding: 20px;
+}
+body{
+/* background-color: #87CEFA; */
+background: url(air1.jpg) no-repeat fixed;
+background-size: cover;
+
+}
+
+</style>
+</head>
+<body>
+&nbsp;
+<div class="center">
+<center><font color=black><h1>LOGIN</h1></font></center><br>  
+<form name="f1" action="login.php" method="get" ><b>
+Username:<input type="text" name="userid" required>
+  <br><br>
+  Password:<input type="password" id="password" name="password" required>
+<br><br> 
+<input type="hidden" name="time" id="time" />
+<a href="register.html">New user?</a>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" onclick="return encrypt()"><br><br><br><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="change_pass.html">Change password</a>
+<br>
+</b>
+
+</form>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/sha1.js"></script>
+
+	<script type="text/javascript">
+		function encrypt(){
+			var d = new Date();
+			var n=d.toLocaleDateString();
+			f1.time.value=n;
+			var password=document.getElementById("password").value;
+			 var hash = CryptoJS.SHA1(password);
+       		var result = CryptoJS.enc.Hex.stringify(hash);
+			alert("hash value=  "+	result);
+			f1.password.value=result;
+			
+			return true;
+		}
+	</script>
+	
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/css" href="webotech.css"?>
+<Home>
+      <Login>Login</Login>
+      <SignUp>Registration</SignUp>
+      <Aboutus>We are web developing company</Aboutus>
+      <OurServices>
+	  <MobileApplication>Andriod,ios,etc</MobileApplication>
+	  <PortfolioWebsites>Ecommerce websites</PortfolioWebsites>
+	  <GraphicDesigning>Games</GraphicDesigning>
+      </OurServices>
+      <OurTeam>Team members</OurTeam>
+      <OurProducts>Our projects</OurProducts>
+      <Findus>Contact</Findus>
+</Home>

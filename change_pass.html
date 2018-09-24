@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/sha1.js"></script>
+<head>
+<style>
+.button {
+  
+	padding: 15px 25px;
+  font-size: 24px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color:#505050;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+	
+    
+}
+
+h1{
+	font-family: "Georgia", serif;
+
+	
+}
+
+.button2:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.26),0 17px 50px 0 rgba(0,0,0,0.21);
+}
+div {
+
+    width: 0px;
+    height: 250px;
+    background-color: 	white;/*#e5bf9a;*/
+    box-shadow: 10px 10px 5px #888888;
+    
+	opacity: 0.8;
+	
+	margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}
+.center {
+    margin: auto;
+    width: 25%;
+    border: none;
+    padding: 20px;
+}
+body{
+/* background-color: #87CEFA; */
+background: url(air8.jpg) no-repeat fixed;
+background-size: cover;
+
+}
+
+</style>
+</head>
+<body>
+&nbsp;
+<div class="center">
+<center><font color=black><h2>CHANGE PASSWORD?</h2></font></center><br>  
+<form name="f1" action="change_pass.php" method="get" ><b>
+Username:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="userid" required>
+  <br><br>
+  Old Password:<input type="password" id="password" name="password" required>
+<br><br> 
+
+New Password:<input type="password" id="new_password" name="new_password" onkeyup="CheckPasswordStrength(this.value)">
+<span id="password_strength"></span>
+<br><br> 
+<br><br> 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<input type="hidden" name="time" id="time" />
+<a href="register.html">New user?</a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" onclick="return encrypt()"><br><br><br><br>
+
+<br>
+</b>
+
+</form>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/sha1.js"></script>
+
+	<script type="text/javascript">
+		var flag=0;
+	
+	
+		function encrypt(){
+			var d = new Date();
+			var n=d.toLocaleDateString();
+			f1.time.value=n;
+			var password=document.getElementById("password").value;
+			 var hash = CryptoJS.SHA1(password);
+       		var result = CryptoJS.enc.Hex.stringify(hash);
+			alert("hash value=  "+	result);
+			f1.password.value=result;
+			
+			
+			var new_password=document.getElementById("new_password").value;
+			 var hash2 = CryptoJS.SHA1(new_password);
+       		var result2 = CryptoJS.enc.Hex.stringify(hash2);
+			//alert("hash value=  "+	result2);
+			f1.new_password.value=result2;
+			
+			return true;
+		}
+		
+		function CheckPasswordStrength(new_password) {
+        var password_strength = document.getElementById("password_strength");
+		var password=f1.new_password.value;
+        //TextBox left blank.
+        if (password.length == 0) {
+            password_strength.innerHTML = "";
+            return;
+        }
+ 
+        //Regular Expressions.
+        var regex = new Array();
+        regex.push("[A-Z]"); //Uppercase Alphabet.
+        regex.push("[a-z]"); //Lowercase Alphabet.
+        regex.push("[0-9]"); //Digit.
+        regex.push("[$@$!%*#?&]"); //Special Character.
+ 
+        var passed = 0;
+ 
+        //Validate for each Regular Expression.
+        for (var i = 0; i < regex.length; i++) {
+            if (new RegExp(regex[i]).test(password)) {
+                passed++;
+            }
+        }
+ 
+        //Validate for length of Password.
+        if (passed > 2 && password.length > 8) {
+            passed++;
+        }
+ 
+        //Display status.
+        var color = "";
+        var strength = "";
+        switch (passed) {
+            case 0:
+            case 1:
+                strength = "Weak";
+                color = "red";
+				flag=0;
+                break;
+            case 2:
+                strength = "Good";
+                color = "darkorange";
+				flag=0;
+                break;
+            case 3:
+            case 4:
+                strength = "Strong";
+                color = "green";
+				flag=1;
+                break;
+            case 5:
+                strength = "Very Strong";
+                color = "darkgreen";
+				flag=1;
+                break;
+        }
+        password_strength.innerHTML = strength;
+        password_strength.style.color = color;
+    }
+		
+		
+		
+	</script>
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

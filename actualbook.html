@@ -1,0 +1,95 @@
+
+<body>
+<center>
+<h1> Book Flight </h1>
+<form action="receipt.php">
+Number of Passengers: <input type="text" name="no"><br><br>
+
+Class of travel:
+<select name="class">
+<option value="Economy">ECONOMY</option>
+<option value="Business">BUSINESS</option>
+<option value="First">FIRST</option>
+</select>
+
+<br><br>
+Type of journey:
+<input type="radio" name="journey" value="Single">SINGLE &nbsp&nbsp&nbsp
+<input type="radio" name="journey" value="Return">RETURN<br>
+<br>
+<input type="submit" value="Book">
+</form>
+</center>
+
+
+
+
+<?php
+$journeytime=$_GET["radiosel"];
+
+$db = mysqli_connect('localhost','root','','endeavour')
+ or die('Error connecting to MySQL server.');
+
+$sql = "select * from  flights where time='$journeytime'";
+$result = mysqli_query($db,$sql);
+
+echo "<center><br><br><table border=1><caption>Available flights</caption>";
+echo "<tr><th>FlightName</th><th>From</th><th>To</th><th>Departure Time</th><th>Travel Date</th><th>Fare</th><th>Select</th></tr>";
+echo "<form action='actualbook.html' method='post'>";
+while ($row = mysqli_fetch_array($result)) {
+ if($departure==$row['departure'] && $destination==$row['destination'])
+   {
+   	echo "<tr><td>";
+   	echo $row['name'];
+   echo "</td><td>";
+   	echo $row['departure'];
+   	echo "</td><td>";
+   	echo $row['destination'];
+   	echo "</td><td>";
+   	echo $row['traveldate'];
+      echo "</td><td>";
+      echo $traveldate;
+   	echo "</td><td>";
+   	echo $row['PRICE'];
+   echo "</td>";
+   echo "<td><input type='radio' name='radiosel' value='$i' checked></td><tr>";
+   	$i=$i+1; 
+   }
+   else
+   {
+   $p=1;
+  }
+
+}
+
+
+if($p==1)
+	echo "<b>No flights available</b><hr><br><br>";
+echo "</table>";
+
+echo "<br><br><input type='submit' value='Book now'>";
+echo "</form></center>";
+
+?>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.button {
+    background-color:   black; 
+    border: none;
+    color: white;
+    padding: 10px 28px;
+    text-align: center;
+    
+    font-size: 13px;
+    margin: 2px 1px;
+    cursor: pointer;
+    
+}
+.button2:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+div {
+    width: 100px;
+    height: 520px;
+    background-color: white;/*#e5bf9a*/
+    box-shadow: 10px 10px 5px #888888;
+    align: center;
+    opacity: 0.7;
+}
+.center {
+    margin: auto;
+    width: 60%;
+    border: none;
+    padding: 10px;
+}
+body{
+/* background-color: #87CEFA; */
+ background: url(air5.jpg) no-repeat fixed;
+ background-size: cover;
+}
+
+</style>
+</head>
+<body>
+ 
+<div class="center">
+<center><h1> Search Flight </h1>
+<form action="book.php">
+Name: <input type="text" name="name"><br><br>
+
+From:
+<select name="departure">
+<option value="BOM">MUMBAI(BOM)</option>
+<option value="DEL">DELHI(DEL)</option>
+</select>
+
+To:
+<select name="destination">
+<option value="DEL">DELHI(DEL)</option>
+<option value="BOM">MUMBAI(BOM)</option>
+</select>
+
+<br><br>
+Travel Date:
+<input type="date" name="traveldate"><br>
+<br>
+<input type="submit" value="Search">
+</form>
+</center>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

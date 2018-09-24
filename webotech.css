@@ -1,0 +1,20 @@
+OurServices{
+	color: black;
+	 background-color: #E9C89D;
+	 margin:0.8em;
+
+}
+Login,SignUp,Aboutus,OurServices,MobileApplication,PortfolioWebsites,GraphicDesigning,OurTeam,OurProducts,Findus{
+	display: block;
+	font-family: "Comic Sans MS";
+	
+}
+Login,SignUp,Aboutus,MobileApplication,PortfolioWebsites,GraphicDesigning,OurTeam,OurProducts,Findus{
+	margin:0.2em;
+}
+Login,SignUp{
+	color: blue;
+}
+OurTeam,OurProducts,Findus{
+	color: green;
+}
